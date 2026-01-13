@@ -1,0 +1,59 @@
+/* Font Imports */
+@import url(https://db.onlinewebfonts.com/c/bbecd6e12f97db669f1cbab12fc6d06b?family=Apercu+Pro+Bold);
+@import url(https://db.onlinewebfonts.com/c/0406c39d71726a4efe1134bf8e3feb71?family=Apercu+Pro);
+@import url(https://db.onlinewebfonts.com/c/5cfc10829ed4fce9e89ca0ae2223d389?family=Druk-WideMedium);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: #19181A; /* Match hero background */
+  position: relative;
+}
+
+/* Global noise overlay - increases from left to right */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #19181A;
+  filter: url(#noise-filter);
+  opacity: 0.15;
+  mix-blend-mode: overlay;
+  z-index: 9999;
+  /* Gradient mask for left-to-right intensity */
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 30%, rgba(0, 0, 0, 0.7) 70%, rgba(0, 0, 0, 1) 100%);
+  -webkit-mask-image: linear-gradient(to right, rgba(213, 118, 118, 0) 0%, rgba(0, 0, 0, 0.3) 30%, rgba(0, 0, 0, 0.7) 70%, rgba(0, 0, 0, 1) 100%);
+  pointer-events: none;
+}
+
+:root {
+  font-family: 'Apercu Pro', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #19181A; /* Changed from #242424 to match hero */
+}
+
+/* Global Typography */
+body {
+  font-family: 'Apercu Pro', system-ui, sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Druk-WideMedium', system-ui, sans-serif;
+}

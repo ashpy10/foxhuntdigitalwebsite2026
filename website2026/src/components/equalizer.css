@@ -1,0 +1,11 @@
+.equalizer {
+  width: 100%;
+  height: 250px;
+  color: inherit; /* Inherits currentColor from parent */
+  display: block;
+}
+
+.equalizer rect {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+

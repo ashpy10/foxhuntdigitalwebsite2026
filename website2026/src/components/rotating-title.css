@@ -1,0 +1,14 @@
+.rotating-title {
+  width: 100%;
+  text-align: right;
+  padding: 0;
+}
+
+.rotating-title h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #ffffff;
+  font-family: 'Druk-WideMedium', system-ui, sans-serif;
+}
+
