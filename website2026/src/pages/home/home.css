@@ -1,0 +1,43 @@
+.home-scroll-container {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  /* Let content determine height naturally */
+}
+
+.home-section {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  /* Natural flow - height determined by content */
+}
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  display: block;
+  /* Height controlled by .hero element */
+}
+
+.what-section-wrapper {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  /* Natural document flow for scroll triggers */
+  margin-top: 0; /* Ensure no gap that might affect triggers */
+}
+
+/* Performance optimizations for scroll animations */
+.hero-section,
+.what-section-wrapper,
+.hero,
+.hero-background,
+.hero-equalizer-wrapper,
+.what-section,
+.what-container,
+.what-title,
+.what-toggle,
+.what-image-box {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}

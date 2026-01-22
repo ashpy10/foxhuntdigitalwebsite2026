@@ -1,13 +1,16 @@
 .hero {
   position: relative;
-  width: 100vw;
-  /* Use calc to subtract header height from viewport height, then reduce by 200px for narrower height */
-  min-height: calc(100vh - var(--header-height, 0px) - 200px);
-  height: calc(100vh - var(--header-height, 0px) - 200px);
+  width: 100%;
+  min-height: calc(100vh - var(--header-height, 0px));
+  height: auto; /* Let content determine height, but ensure minimum */
   background-color: #19181A;
   overflow: hidden;
-  left: 50%;
-  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 .hero-background {
@@ -18,6 +21,9 @@
   height: 100%;
   background-color: #19181A;
   z-index: 0;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 
@@ -35,11 +41,14 @@
   padding-bottom: 20px;
   color: inherit; /* Inherits from hero, which should match logo color */
   pointer-events: none; /* Allow clicks to pass through */
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 .hero-sign {
   position: absolute;
-  bottom: 280px; /* Positioned above the equalizer bars (wrapper is 250px + spacing) */
+  bottom: 500px; /* Positioned higher above the equalizer bars */
   left: 50%;
   transform: translateX(-50%);
   font-family: 'Apercu Pro Bold', 'Apercu Pro', system-ui, sans-serif;
@@ -51,11 +60,15 @@
   pointer-events: none;
   opacity: 0; /* GSAP will control visibility */
   z-index: 4; /* Ensure it's above the equalizer */
+  padding: 0px 0px; /* Padding for the black rectangle background */
+  background-color: #000000; /* Black rectangle background */
+  display: inline-block; /* Allow padding and background */
+  text-align: center; /* Center align text */
 }
 
 .hero-staggered-text {
   position: absolute;
-  bottom: 280px; /* Same vertical position as transition text */
+  bottom: 500px; /* Base position higher above equalizer */
   font-family: 'Apercu Pro Bold', 'Apercu Pro', system-ui, sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
@@ -65,29 +78,35 @@
   pointer-events: none;
   opacity: 0; /* GSAP will control visibility */
   z-index: 4;
+  line-height: 1.3; /* Tighter line height for two-line text */
+  text-align: center; /* Center align for better two-line appearance */
+  white-space: normal; /* Allow line breaks */
+  padding: 0px 0px; /* Padding for the black rectangle background */
+  background-color: #000000; /* Black rectangle background */
+  display: inline-block; /* Allow padding and background */
 }
 
 .hero-text-1 {
-  left: 20%;
-  bottom: 320px; /* Higher position (roller coaster peak) */
+  left: 18%;
+  bottom: 600px; /* Higher position (roller coaster peak) */
   transform: translateX(-50%);
 }
 
 .hero-text-2 {
-  left: 35%;
-  bottom: 240px; /* Lower position (roller coaster valley) */
+  left: 45%;
+  bottom: 400px; /* Lower position (roller coaster valley) - still above equalizer */
   transform: translateX(-50%);
 }
 
 .hero-text-3 {
   left: 65%;
-  bottom: 320px; /* Higher position (roller coaster peak) */
+  bottom: 600px; /* Higher position (roller coaster peak) */
   transform: translateX(-50%);
 }
 
 .hero-text-4 {
-  left: 80%;
-  bottom: 240px; /* Lower position (roller coaster valley) */
+  left: 85%;
+  bottom: 400px; /* Lower position (roller coaster valley) - still above equalizer */
   transform: translateX(-50%);
 }
 

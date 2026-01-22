@@ -85,12 +85,12 @@ function Hero() {
       ease: 'power2.in',
     }, '+=3.6') // Total: 0 + 2 + 2 + 2 + 4 = 10 seconds
     // // Show transition text
-    // .to(sign, {
-    //   autoAlpha: 1,
-    //   y: 0,
-    //   duration: 0.4,
-    //   ease: 'power2.out',
-    // })
+    .to(sign, {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.4,
+      ease: 'power2.out',
+    })
     // Keep text visible briefly, then switch to tuned
     .to({}, {
       duration: 0.8,
@@ -166,22 +166,22 @@ function Hero() {
           Tune the madness
         </div>
         <div className="hero-tuned-text-1 hero-sign" ref={tunedText1Ref} style={{ color: strokeColor }}>
-          Bring you business into rhythm
+          Bring your business into rhythm
         </div>
         <div className="hero-tuned-text-2 hero-sign" ref={tunedText2Ref} style={{ color: strokeColor }}>
           with operational clarity
         </div>
         <div className="hero-text-1 hero-staggered-text" ref={text1Ref} style={{ color: strokeColor }}>
-          Unknown business metrics
+          Unknown business<br />metrics
         </div>
         <div className="hero-text-2 hero-staggered-text" ref={text2Ref} style={{ color: strokeColor }}>
-          Too many spreadsheets to update
+          Too many spreadsheets<br />to update
         </div>
         <div className="hero-text-3 hero-staggered-text" ref={text3Ref} style={{ color: strokeColor }}>
-          Decisions without facts
+          Decisions without<br />facts
         </div>
         <div className="hero-text-4 hero-staggered-text" ref={text4Ref} style={{ color: strokeColor }}>
-          Silence the chaos
+          Silence the<br />chaos
         </div>
       </div>
     </section>

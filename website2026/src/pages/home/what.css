@@ -1,0 +1,188 @@
+.what-section {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - var(--header-height, 0px));
+  height: auto; /* Let content determine height, but ensure minimum */
+  padding: 120px 20px;
+  background-color: #19181A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+.what-container {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+.what-title {
+  font-family: 'Druk-WideMedium', system-ui, sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.87);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.what-title .highlightable-word {
+  transition: font-weight 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.what-title .highlightable-word:hover {
+  color: #1FFFC0;
+}
+
+.what-toggle {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.toggle-btn {
+  padding: 12px 24px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Apercu Pro', system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.toggle-btn.active {
+  background-color: #1FFFC0;
+  border-color: #1FFFC0;
+  color: #19181A;
+  font-weight: 600;
+}
+
+.what-image-box {
+  width: 100%;
+  max-width: 800px;
+  aspect-ratio: 16 / 9;
+  border-radius: 24px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  /* 3D Shadow Effect */
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  
+  /* Additional depth with multiple shadows */
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+  
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  
+  /* Perspective for 3D effect */
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.what-image-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(31, 255, 192, 0.1) 0%,
+    rgba(0, 0, 0, 0.2) 50%,
+    rgba(31, 255, 192, 0.05) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(25, 24, 26, 0.8);
+  position: relative;
+}
+
+/* Placeholder styling when no image is set */
+.image-placeholder:empty::after {
+  content: 'Image will appear here';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255, 255, 255, 0.3);
+  font-family: 'Apercu Pro', system-ui, sans-serif;
+  font-size: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .what-section {
+    padding: 80px 20px;
+  }
+
+  .what-container {
+    gap: 40px;
+  }
+
+  .what-title {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+  }
+
+  .toggle-btn {
+    padding: 10px 18px;
+    font-size: 0.85rem;
+  }
+
+  .what-image-box {
+    border-radius: 16px;
+  }
+}
+
+/* Animation for image reveal */
+@keyframes imageReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.what-image-box.visible {
+  animation: imageReveal 0.5s ease forwards;
+}
